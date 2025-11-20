@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import HeroSection from "@/components/sections/HeroSection";
 import { useScrollStore } from "@/store/scrollStore";
 import TechStackMarquee from "../sections/TechStackMarquee";
+import { motion } from "framer-motion";
 
 // HomePage.tsx
 export default function HomePage() {
@@ -17,15 +18,21 @@ export default function HomePage() {
   
 
   return (
-    <main className="w-full h-full overflow-x-hidden relative">
+    <main className="w-full h-full overflow-x-hidden relative bg-linear-to-r from-background  via-primary/10 to-background">
       <HeroSection />
 
       {/* Tech Stack Marquee Section */}
-      <section className="relative w-full mt-48 py-12 h-[160vh] bg-background">
+      <section className="relative w-full mt-48 py-12 h-[150vh] ">
         <div className="h-screen flex flex-col justify-center items-center">
-          <div className="text-center mb-8">
+            <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, scale: 1.25 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.5 }} // triggers once when 50% visible
+            >
             <h2 className="text-3xl md:text-5xl font-bold">Tech Stack</h2>
-          </div>
+            </motion.div>
           <TechStackMarquee />
         </div>
       </section>
