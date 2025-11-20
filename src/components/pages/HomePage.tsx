@@ -3,6 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import { useScrollStore } from "@/store/scrollStore";
 import TechStackMarquee from "../sections/TechStackMarquee";
 import { motion } from "framer-motion";
+import { animate } from "framer-motion";
 
 // HomePage.tsx
 export default function HomePage() {
@@ -13,8 +14,20 @@ export default function HomePage() {
       setScrollY(window.scrollY);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Animate scroll to top on page load
+    const scrollAnim = animate(window.scrollY, 0, {
+      duration: 1, // 1.5 seconds animation
+      onUpdate: (v) => window.scrollTo(0, v),
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      scrollAnim.stop();
+    };
   }, [setScrollY]);
+
+  
   
 
   return (
