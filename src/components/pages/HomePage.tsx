@@ -13,6 +13,10 @@ import { BackgroundBeams } from "../ui/shadcn-io/background-beams";
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
+const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini/i.test(
+  navigator.userAgent
+);
+
 
 export default function HomePage() {
   const setScrollY = useScrollStore((state) => state.setScrollY);
@@ -82,7 +86,7 @@ export default function HomePage() {
             trigger: el,
             start: "top 90%",   
             end: "bottom 10%", 
-            scrub: 2.5,
+            scrub: isMobile ? 0.8 : 3,
             markers: false,      
             // onUpdate: (self) => console.log("Scroll progress:", self.progress),
           },
@@ -109,8 +113,8 @@ export default function HomePage() {
     }}
       >
       <Particles
-        className="absolute inset-0"
-        quantity={120}
+        className="absolute inset-0 will-change-transform"
+        quantity={isMobile ? 80 : 120}
         ease={80}
         staticity={100}
         color="#ffffff"
@@ -129,7 +133,7 @@ export default function HomePage() {
         id="projects-section"
         className="relative  py-8 text-center"
       >
-        <BackgroundBeams className="absolute inset-0" />
+        <BackgroundBeams className="absolute inset-0 will-change-transform" />
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 will-change-transform"
         ref={projectsRef}
         >

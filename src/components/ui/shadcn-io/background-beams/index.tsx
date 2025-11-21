@@ -91,7 +91,7 @@ export const BackgroundBeams = React.memo(
               key={`path-${index}`}
               d={_path}
               stroke={`url(#linearGradient-${index})`}
-              strokeOpacity="0.4"
+              strokeOpacity="0.45"
               strokeWidth="0.5"
             />
           ))}
@@ -120,7 +120,7 @@ export const BackgroundBeams = React.memo(
                   delay: Math.random() * 10,
                 }}
               >
-              <stop stopColor="white" stopOpacity="0" />
+              <stop stopColor="white" stopOpacity="0.015" />
               <stop stopColor="white" stopOpacity="0.25" />
               <stop offset="35%" stopColor="rgb(34,139,34)" stopOpacity="0.30" />
               <stop offset="100%" stopColor="rgb(34,139,34)" stopOpacity="0.025" />
@@ -137,10 +137,10 @@ export const BackgroundBeams = React.memo(
               gradientTransform="translate(352 34) rotate(90) scale(555 1560.62)"
             >
               {/* Very soft white center */}
-              <stop offset="0.06" stopColor="white" stopOpacity="0.18" />
+              <stop offset="0.06" stopColor="white" stopOpacity="0.15" />
 
               {/* Very subtle forest green tint */}
-              <stop offset="0.22" stopColor="rgb(34,139,34)" stopOpacity="0.05" />
+              <stop offset="0.22" stopColor="rgb(34,139,34)" stopOpacity="0.1" />
 
               {/* Fully faded out */}
               <stop offset="0.40" stopColor="rgb(34,139,34)" stopOpacity="0" />
