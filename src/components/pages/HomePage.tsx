@@ -76,13 +76,13 @@ export default function HomePage() {
         el,
         { y: 0 }, 
         {
-          y: -1200,
+          y: -800,
           ease: "none",
           scrollTrigger: {
             trigger: el,
             start: "top 90%",   
             end: "bottom 10%", 
-            scrub: 3,
+            scrub: 2.5,
             markers: false,      
             // onUpdate: (self) => console.log("Scroll progress:", self.progress),
           },
