@@ -122,8 +122,8 @@ export const BackgroundBeams = React.memo(
               >
               <stop stopColor="white" stopOpacity="0" />
               <stop stopColor="white" stopOpacity="0.25" />
-              <stop offset="35%" stopColor="rgb(34,139,34)" stopOpacity="0.20" />
-              <stop offset="100%" stopColor="rgb(34,139,34)" stopOpacity="0" />
+              <stop offset="35%" stopColor="rgb(34,139,34)" stopOpacity="0.30" />
+              <stop offset="100%" stopColor="rgb(34,139,34)" stopOpacity="0.025" />
 
               </motion.linearGradient>
             ))}
@@ -140,7 +140,7 @@ export const BackgroundBeams = React.memo(
               <stop offset="0.06" stopColor="white" stopOpacity="0.18" />
 
               {/* Very subtle forest green tint */}
-              <stop offset="0.22" stopColor="rgb(34,139,34)" stopOpacity="0.08" />
+              <stop offset="0.22" stopColor="rgb(34,139,34)" stopOpacity="0.05" />
 
               {/* Fully faded out */}
               <stop offset="0.40" stopColor="rgb(34,139,34)" stopOpacity="0" />
