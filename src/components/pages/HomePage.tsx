@@ -1,12 +1,15 @@
 // HomePage.tsx - CORRECT GSAP PIN IMPLEMENTATION
 import { useEffect, useRef } from "react";
-import { motion, animate } from "framer-motion";
+import { animate } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSection from "@/components/sections/HeroSection";
 import { useScrollStore } from "@/store/scrollStore";
 import TechStackMarquee from "../sections/TechStackMarquee";
-import sprinkle from "@/assets/svg/layered-waves-haikei.svg"
+// import sprinkle from "@/assets/svg/layered-waves-haikei.svg"
+import FeaturedProjects from "../sections/Projects";
+import { Particles } from "../ui/shadcn-io/particles";
+import { BackgroundBeams } from "../ui/shadcn-io/background-beams";
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomePage() {
   const setScrollY = useScrollStore((state) => state.setScrollY);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
   const marqueeWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -59,6 +63,37 @@ export default function HomePage() {
     };
   }, []);
 
+  // PROJECTS PARALLAX SCROLL (entire section moves up/down)
+  useEffect(() => {
+    if (!projectsRef.current) {
+      return;
+    }
+
+    const el = projectsRef.current;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el,
+        { y: 0 }, 
+        {
+          y: -800,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",   
+            end: "bottom 10%", 
+            scrub: 3,
+            markers: false,      
+            // onUpdate: (self) => console.log("Scroll progress:", self.progress),
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+
   return (
     <main className="w-full overflow-x-hidden relative bg-linear-to-r from-background via-primary/10 to-background">
       <HeroSection />
@@ -67,33 +102,41 @@ export default function HomePage() {
       <section 
         ref={sectionRef}
         className="relative w-full mt-64 h-[460vh]"style={{
-        backgroundImage: `url(${sprinkle})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "bottom",
-        backgroundSize: "cover",
+        // backgroundImage: `url(${sprinkle})`,
+        // backgroundRepeat: "no-repeat",
+        // backgroundPosition: "bottom",
+        // backgroundSize: "cover",
     }}
       >
+      <Particles
+        className="absolute inset-0"
+        quantity={120}
+        ease={80}
+        staticity={100}
+        color="#ffffff"
+        size={1}
+      />
         <div 
           ref={marqueeWrapperRef}
           className="w-full h-screen flex flex-col justify-center items-center"
         >
-          <motion.div
-            className="text-center mb-8"
-            initial={{ opacity: 0, scale: 1.25 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.75, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold">Tech Stack</h2>
-          </motion.div>
           <TechStackMarquee />
         </div>
       </section>
 
       {/* PROJECTS */}
-      <section id="projects-section" className="py-20 bg-muted text-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-10">PROJECTS</h2>
+      <section
+        id="projects-section"
+        className="relative  py-8 text-center"
+      >
+        <BackgroundBeams className="absolute inset-0" />
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 will-change-transform"
+        ref={projectsRef}
+        >
+          <FeaturedProjects />
+        </div>
       </section>
+
 
       {/* ABOUT ME */}
       <section className="py-20 bg-background text-center">

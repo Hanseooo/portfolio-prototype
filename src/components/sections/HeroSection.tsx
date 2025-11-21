@@ -47,7 +47,7 @@ export default function HeroSection() {
   }, [scrollY, bgTranslate, heroTranslate, nameTranslate, taglineTranslate, buttonTranslate, heroPortraitTranslate]);
 
   return (
-    <section className="relative w-full min-h-screen h-[2vh] pb-4 overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-16 lg:px-24 min-w-60"
+    <section className="relative w-full border-b-2 border-primary/15 min-h-screen h-[2vh] pb-4 overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-16 lg:px-24 min-w-60"
       style={{
         backgroundImage: `url(${waves})`,
         backgroundRepeat: "no-repeat",
