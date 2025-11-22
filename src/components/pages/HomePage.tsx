@@ -136,15 +136,6 @@ useEffect(() => {
     <main className="w-full overflow-x-hidden relative bg-linear-to-r from-background via-primary/10 to-background">
       <HeroSection />
 
-        <Particles
-          className="absolute inset-0 will-change-transform z-[-1]"
-          quantity={isMobile ? 100 : 175}
-          ease={80}
-          staticity={75}
-          color="#ffffff"
-          size={1.2}
-      />
-
       {/* Tech Stack Marquee Section - WITH GSAP PIN */}
       <section 
         ref={sectionRef}
@@ -155,7 +146,14 @@ useEffect(() => {
         // backgroundSize: "cover",
     }}
       >
-
+      <Particles
+        className="absolute inset-0 will-change-transform"
+        quantity={isMobile ? 80 : 120}
+        ease={80}
+        staticity={100}
+        color="#ffffff"
+        size={1}
+      />
         <div 
           ref={marqueeWrapperRef}
           className="w-full h-screen flex flex-col justify-center items-center"
