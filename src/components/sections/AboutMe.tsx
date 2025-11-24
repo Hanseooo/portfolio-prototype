@@ -7,6 +7,7 @@ import myImg from "@/assets/images/me2.jpg";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { isInAppBrowser } from "@/utils/browserInfo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,8 @@ export default function AboutMe() {
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (isMobile) return;
+  if (isInAppBrowser()) return;
+
 
     const ctx = gsap.context(() => {
       // LEFT COLUMN — up/down parallax depending on scroll direction

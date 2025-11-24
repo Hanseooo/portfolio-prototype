@@ -7,11 +7,9 @@ function App() {
 
   return (
     <>
-    <Analytics />
-    <SpeedInsights />
-      <div>
-        <HomePage />
-      </div>
+      <Analytics />
+      <SpeedInsights />
+      <HomePage />
     </>
   )
 }

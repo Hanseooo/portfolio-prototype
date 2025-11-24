@@ -47,10 +47,7 @@ export default function HomePage() {
 
   // GSAP ScrollTrigger PIN effect
   useEffect(() => {
-    if (isInAppBrowser()) {
-      document.documentElement.classList.add("iab");
-      return;
-    }
+
     if (!sectionRef.current || !marqueeWrapperRef.current) return;
 
     const section = sectionRef.current;
@@ -164,7 +161,7 @@ useEffect(() => {
       />
         <div 
           ref={marqueeWrapperRef}
-          className="marquee-pin w-full h-screen flex flex-col justify-center items-center"
+          className="w-full h-screen flex flex-col justify-center items-center"
         >
           <TechStackMarquee />
         </div>
