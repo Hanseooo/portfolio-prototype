@@ -17,6 +17,7 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import { ExternalLink, Github } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
+import { isInAppBrowser } from "@/utils/browserInfo";
 
 // Register plugin at module level with SSR check
 if (typeof window !== "undefined") {
@@ -325,6 +326,7 @@ export default function FeaturedProjects({ projects = featuredProjects }: { proj
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!sectionRef.current || !cardsContainerRef.current) return;
+    if (isInAppBrowser()) return
 
     const section = sectionRef.current;
     const cardsContainer = cardsContainerRef.current;
