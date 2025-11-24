@@ -2,8 +2,8 @@ import  { useEffect } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
 import { useScrollStore } from "@/store/scrollStore";
 import { Button } from "@/components/ui/button";
-import meBg from "@/assets/images/me-bg.png";
-import me from "@/assets/images/me.png";
+import meBg from "@/assets/images/hans-bg.png";
+import me from "@/assets/images/hans.png";
 import waves from "@/assets/svg/topography.svg";
 
 const NAME = "Hans Amoguis";

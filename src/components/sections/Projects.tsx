@@ -118,7 +118,7 @@ function EmblaCarousel({ images, alt }: { images: string[]; alt: string }) {
       autoPlayInterval.current = setInterval(() => {
         if (!emblaApi) return;
         emblaApi.scrollNext();
-      }, 5000);
+      }, 8000);
     };
 
     play();

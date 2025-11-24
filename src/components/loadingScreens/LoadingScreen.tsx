@@ -23,7 +23,7 @@ export default function LoadingScreen({
   const [showSkip, setShowSkip] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSkip(true), 2000);
+    const timer = setTimeout(() => setShowSkip(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -54,7 +54,7 @@ export default function LoadingScreen({
       )}
       
         {isInAppBrowser() ? (
-        <p className="text-primary/75 text-center text-xs fixed bottom-20 p-8">
+        <p className="text-primary/75 text-center text-xs fixed bottom-20 p-6">
             Use external browsers such as Chrome, Brave, or Safari for better Experience <br />
             in-app browsers may cause issues
         </p>
