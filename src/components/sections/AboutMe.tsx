@@ -76,7 +76,7 @@ export default function AboutMe() {
   const content = [
     {
       title: "About Me",
-      text: `I’m a 3rd-year BSIT student from the Philippines, a self-taught full-stack developer with a strong focus on TypeScript and Python. I enjoy building clean, functional, and useful web applications.`,
+      text: `I’m a 3rd-year BSIT student from the Philippines, a self-taught full-stack developer with a strong focus on TypeScript, React, and Python. I enjoy building clean, functional, and useful web applications.`,
     },
     {
       title: "Strengths",
@@ -84,7 +84,7 @@ export default function AboutMe() {
     },
     {
       title: "My Journey",
-      text: `I started coding during my first year in college in 2023. Since then, I’ve explored different technologies to strengthen my engineering foundations.`,
+      text: `I started coding during my first year in college in 2023. Since then, I’ve explored different technologies to strengthen my engineering foundations to build projects.`,
     },
     {
       title: "Currently Looking For",
