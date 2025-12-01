@@ -27,6 +27,7 @@ import { Particles } from "@/components/ui/shadcn-io/particles";
 import nationalProgrammingChallenge2024 from "@/assets/images/Certificates/national-programming-challenge-2024.png"
 import programmingComp2024 from "@/assets/images/Certificates/programming-comp-2024.jpg"
 import googleIoExtendedCert from "@/assets/images/Certificates/google-io-extended-cert.png"
+import devfest2025Cert from "@/assets/images/Certificates/devfest2025-cert.png"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,6 +59,13 @@ const certificates: Certificate[] = [
     issuer: "Provincial Disaster Risk Reduction and Management Office",
     imageUrl: "",
     date: "November 15, 2025",
+    credentialUrl: null,
+  },
+    {
+    title: "Devfest Davao 2025 Participation",
+    issuer: "Google Developer Group Davao",
+    imageUrl: devfest2025Cert,
+    date: "November 23, 2025",
     credentialUrl: null,
   },
   {
