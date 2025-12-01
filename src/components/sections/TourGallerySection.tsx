@@ -27,7 +27,7 @@ function TourGalleryCard({
       )}
       aria-label={title ?? `Tour photo ${index + 1}`}
     >
-      <Card className="h-full border-b-2 border-foreground/20 bg-background/20 backdrop-blur-lg shadow-2xl flex flex-col">
+      <Card className="h-full border-b-2 border-foreground/20 bg-background/20 backdrop-blur-md md:backdrop-blur-lg shadow-2xl flex flex-col">
         <div className="p-3 shrink-0">
           <div className="relative h-80 md:h-[360px] bg-linear-to-br from-background/5 to-background/20 overflow-hidden rounded-xl">
             <img
@@ -37,6 +37,7 @@ function TourGalleryCard({
               style={{ objectFit: 'cover' }}
               draggable={false}
               loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.15)] pointer-events-none rounded-xl" />
@@ -68,48 +69,63 @@ export default function TourGallerySection() {
   const [images] = useState<string[]>(
     Array.from({ length: 10 }).map((_, i) => `/tour/classPhotos/${i + 1}.jpeg`)
   );
+  
   const cardContent = [
     {
-        title: "University of The Philippines Cebu",
-        caption: "",
+      title: "University of The Philippines Cebu",
+      caption: "",
     },
-        {
-        title: "Dynata Philippines Inc.",
-        caption: "",
+    {
+      title: "Dynata Philippines Inc.",
+      caption: "",
     },
-        {
-        title: "UP CeBu InIT",
-        caption: "",
+    {
+      title: "UP CeBu InIT",
+      caption: "",
     },
-        {
-        title: "Chocolate Hills",
-        caption: "",
+    {
+      title: "Chocolate Hills",
+      caption: "",
     },
-        {
-        title: "Chocolate Hills #2",
-        caption: "",
+    {
+      title: "Chocolate Hills #2",
+      caption: "",
     },
-        {
-        title: "Magellan's Cross",
-        caption: "",
+    {
+      title: "Magellan's Cross",
+      caption: "",
     },
-        {
-        title: "Monument and Battle of Mactan Painting",
-        caption: "",
+    {
+      title: "Monument and Battle of Mactan Painting",
+      caption: "",
     },
-        {
-        title: "Mata Technologies Inc.",
-        caption: "",
+    {
+      title: "Mata Technologies Inc.",
+      caption: "",
     },
-        {
-        title: "Mactan Shrine",
-        caption: "",
+    {
+      title: "Mactan Shrine",
+      caption: "",
     },
-        {
-        title: "SM City Cebu",
-        caption: "",
+    {
+      title: "SM City Cebu",
+      caption: "",
     },
-  ]
+  ];
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const containerEl = containerRef.current;
@@ -154,8 +170,12 @@ export default function TourGallerySection() {
         return;
       }
 
+      // Mobile performance optimizations
+      const scrubSpeed = isMobile ? 1.2 : 1.8; // Faster scrub on mobile
+      const cardScrubSpeed = isMobile ? 1.5 : 2.5; // Faster card animations on mobile
+
       ctx = gsap.context(() => {
-        // Fade in animation from 30% viewport entry to 100% (top of section reaches top of viewport)
+        // Fade in animation
         gsap.fromTo(
           containerEl,
           { opacity: 0 },
@@ -164,8 +184,8 @@ export default function TourGallerySection() {
             ease: "none",
             scrollTrigger: {
               trigger: containerEl,
-              start: "top 70%", // When top is at 70% down viewport (30% of section visible)
-              end: "top top", // When top reaches top of viewport (100% progression)
+              start: "top 70%",
+              end: "top top",
               scrub: true,
             },
           }
@@ -177,7 +197,7 @@ export default function TourGallerySection() {
           start: "top top",
           end: `+=${maxScroll * 2}`,
           pin: true,
-          scrub: 1.8,
+          scrub: scrubSpeed,
           anticipatePin: 1,
           markers: false,
           id: "gallery-pin",
@@ -191,22 +211,24 @@ export default function TourGallerySection() {
             trigger: containerEl,
             start: "top top",
             end: `+=${maxScroll * 2}`,
-            scrub: 1.8,
+            scrub: scrubSpeed,
             id: "gallery-scroll",
           },
         });
 
-        // Background parallax
-        gsap.to(bgEl, {
-          x: -maxScroll * 0.25,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerEl,
-            start: "top top",
-            end: `+=${maxScroll * 2}`,
-            scrub: 2,
-          },
-        });
+        // Background parallax (disabled on mobile for performance)
+        if (!isMobile) {
+          gsap.to(bgEl, {
+            x: -maxScroll * 0.25,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerEl,
+              start: "top top",
+              end: `+=${maxScroll * 2}`,
+              scrub: 2,
+            },
+          });
+        }
 
         // Overlay fade
         gsap.fromTo(
@@ -226,7 +248,7 @@ export default function TourGallerySection() {
 
         // Intro fade
         gsap.to(introEl, {
-          y: -120,
+          y: isMobile ? -80 : -120, // Less movement on mobile
           opacity: 0.4,
           ease: "none",
           scrollTrigger: {
@@ -237,10 +259,14 @@ export default function TourGallerySection() {
           },
         });
 
-        // Card animations
+        // Card animations (simplified on mobile)
         gsap.utils.toArray<HTMLElement>(".tour-card").forEach((cardEl, i) => {
-          const verticalOffset = (i % 2 === 0 ? 1 : -1) * (12 + (i % 3) * 8);
-          const scaleTo = 1.02 + (i % 3) * 0.005;
+          // Reduced vertical parallax on mobile
+          const verticalOffset = isMobile 
+            ? (i % 2 === 0 ? 1 : -1) * 6 
+            : (i % 2 === 0 ? 1 : -1) * (12 + (i % 3) * 8);
+          
+          const scaleTo = isMobile ? 1.01 : 1.02 + (i % 3) * 0.005;
 
           gsap.to(cardEl, {
             y: verticalOffset,
@@ -249,25 +275,28 @@ export default function TourGallerySection() {
               trigger: containerEl,
               start: "top top",
               end: `+=${maxScroll * 2}`,
-              scrub: 2.5,
+              scrub: cardScrubSpeed,
             },
           });
 
-          gsap.fromTo(
-            cardEl,
-            { scale: 1, boxShadow: "0px 10px 40px rgba(0,0,0,0.1)" },
-            {
-              scale: scaleTo,
-              boxShadow: "0px 25px 60px rgba(0,0,0,0.2)",
-              ease: "none",
-              scrollTrigger: {
-                trigger: containerEl,
-                start: "top top",
-                end: `+=${maxScroll * 2}`,
-                scrub: 2.5,
-              },
-            }
-          );
+          // Simplified shadow animation on mobile
+          if (!isMobile) {
+            gsap.fromTo(
+              cardEl,
+              { scale: 1, boxShadow: "0px 10px 40px rgba(0,0,0,0.1)" },
+              {
+                scale: scaleTo,
+                boxShadow: "0px 25px 60px rgba(0,0,0,0.2)",
+                ease: "none",
+                scrollTrigger: {
+                  trigger: containerEl,
+                  start: "top top",
+                  end: `+=${maxScroll * 2}`,
+                  scrub: cardScrubSpeed,
+                },
+              }
+            );
+          }
         });
 
         ScrollTrigger.refresh();
@@ -277,7 +306,6 @@ export default function TourGallerySection() {
     const init = async () => {
       await preloadImages(images);
       
-      // Wait for layout to settle
       setTimeout(() => {
         setupAnimation();
       }, 100);
@@ -300,7 +328,7 @@ export default function TourGallerySection() {
       if (ctx) ctx.revert();
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
-  }, [images]);
+  }, [images, isMobile]);
 
   return (
     <section className="relative w-full">
@@ -362,13 +390,13 @@ export default function TourGallerySection() {
                 key={src}
                 src={src}
                 index={i}
-                title={`${cardContent[i].title}`}
-                caption={`${cardContent[i].caption}`}
+                title={cardContent[i].title}
+                caption={cardContent[i].caption}
               />
             ))}
 
             {/* End spacer */}
-            <div className="shrink-0 w-240px" />
+            <div className="shrink-0 w-60" />
           </div>
         </div>
       </div>
