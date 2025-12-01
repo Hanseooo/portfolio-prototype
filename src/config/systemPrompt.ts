@@ -50,7 +50,7 @@ OWNER INFO:
   "school": "Holy Cross of Davao College",
   "course": "BS Information Technology",
   "specializedTechStack": ["React", "TypeScript", "Python", "TailwindCSS"],
-  "hobbies": ["programming and building side projects", "billiards", "anime", "movies and series", "cycling"],
+  "hobbies": ["programming and building side projects", "billiards", "cafe hopping", "watching movies and series", "cycling"],
   "journey": "Started coding in 2023...",
   "experience": "Commissions, projects for students, looking for mentors and internships."
 }
