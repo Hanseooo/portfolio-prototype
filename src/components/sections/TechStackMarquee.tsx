@@ -142,11 +142,13 @@ export default function TechStackMarquee() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
+            id="tech-stack-section"
+            
           >
             <h2 className="text-3xl md:text-5xl font-bold">Tech Stack</h2>
           </motion.div>
 
-      <motion.div className="w-full flex flex-col gap-8 items-center" style={{ y: containerY }}>
+      <motion.div className="w-full flex flex-col gap-8 items-center" style={{ y: containerY }} >
         <div className="relative w-full max-w-[95%] flex flex-col gap-8">
           {/* Row 1 */}
           <div className="overflow-hidden">

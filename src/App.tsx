@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import EducationalTourPage from "./components/pages/EducationalTourPage";
+import ChatbotWidget from "./components/widgets/ChatbotWidget";
 
 function Layout() {
   const location = useLocation();
@@ -18,7 +19,7 @@ function Layout() {
   return (
     <>
       {showNavbar && <Navbar />}
-
+      <ChatbotWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/certificates" element={<CertificatesPage />} />

@@ -165,10 +165,6 @@ useEffect(() => {
       <section 
         ref={sectionRef}
         className="relative w-full mt-64 h-[460vh]"style={{
-        // backgroundImage: `url(${sprinkle})`,
-        // backgroundRepeat: "no-repeat",
-        // backgroundPosition: "bottom",
-        // backgroundSize: "cover",
     }}
       >
       <Particles
@@ -201,11 +197,11 @@ useEffect(() => {
 
       </section>
 
-
       {/* ABOUT ME */}
       <section
         ref={aboutMeRef}
         className="relative py-20 text-center will-change-transform"
+        
       >
         <BackgroundBeams className="absolute inset-0 -z-10" />
 

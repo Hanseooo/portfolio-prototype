@@ -93,7 +93,7 @@ export default function AboutMe() {
   ];
 
   return (
-    <section className="w-full pt-12 pb-96">
+    <section className="w-full pt-12 pb-96" id="about-me-section">
       <div className="max-w-5xl mx-auto px-4 gap-24 grid grid-cols-1 md:grid-cols-[260px_1fr]">
 
         {/* LEFT COLUMN */}

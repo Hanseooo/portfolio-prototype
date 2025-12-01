@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/genai": "^1.30.0",
+    "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-progress": "^1.1.8",
@@ -21,6 +23,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.24",
     "gsap": "^3.13.0",
@@ -29,11 +32,12 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.6",
+    "react-router-hash-link": "^2.4.3",
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.17",
     "vaul": "^1.1.2",
-    "zustand": "^5.0.8"
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
