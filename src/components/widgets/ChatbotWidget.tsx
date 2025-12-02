@@ -85,7 +85,7 @@ function ChatInput({ onSend, isLoading }: { onSend: (t: string) => Promise<void>
   }
 
   return (
-    <div className="p-4 flex items-center border-t border-white/10 bg-white/5 backdrop-blur-sm">
+    <div className="p-4 flex items-center border-t border-white/15 bg-white/5 backdrop-blur-md">
         <div className="flex h-12 items-center gap-3">
             <Textarea
             ref={textareaRef}
