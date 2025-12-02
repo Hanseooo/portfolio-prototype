@@ -111,7 +111,7 @@ async function callModelAPI(messages: ChatMessage[]) {
 export function useChatbot() {
   // messages that will actually appear in the UI
   const [messages, setMessages] = useState<ChatMessage[]>([
-    createMessage("assistant", "Hello! How can I assist you today?", "local"),
+    createMessage("assistant", "Hello! How can I assist you today? I can help you with information about the site or navigation", "local"),
   ]);
 
   const [isLoading, setIsLoading] = useState(false);
