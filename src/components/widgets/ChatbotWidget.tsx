@@ -92,7 +92,7 @@ function ChatInput({ onSend, isLoading }: { onSend: (t: string) => Promise<void>
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={1}
-          className="resize-none max-h-32 bg-white/5 text-white placeholder-white/60"
+          className="resize-none max-h-32 bg-white/5 w-58 text-white placeholder-white/60"
           placeholder="Ask about the site or navigation"
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
