@@ -51,7 +51,7 @@ const companies: Company[] = [
     link: "https://www.facebook.com/rivanitcebu/",
     JournalEntry: {
       observations: "I observed that they are more into networking which is a field that is also fundamentally essential in cybersecurity and cloud computing. They value a person's skillset determination to learn.",
-      learnings: "I learned about the habitsthat make a skilled professional. I learned about how small habits impact the transition of productive actions with discomfort into a productive action with comfort. I also learned how to configure a switch with analog telephones connected to it using a CLI during the activity.",
+      learnings: "I learned about the habits that make a skilled professional. I learned about how small habits impact the transition of productive actions with discomfort into a productive action with comfort. I also learned how to configure a switch with analog telephones connected to it using a CLI during the activity.",
     },
   },
   {
