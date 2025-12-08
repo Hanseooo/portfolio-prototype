@@ -30,6 +30,7 @@ import googleIoExtendedCert from "@/assets/images/Certificates/google-io-extende
 import devfest2025Cert from "@/assets/images/Certificates/devfest2025-cert.png"
 import pythonEssentials1Cert from "@/assets/images/Certificates/python-essentials1.png"
 import IMCompletionCert from "@/assets/images/Certificates/IM-completion.png"
+import introToModernAICert from "@/assets/images/Certificates/intro-to-modern-ai.png"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,12 +43,12 @@ interface Certificate {
 }
 
 const certificates: Certificate[] = [
-    {
-    title: "Python Essentials 1 Completion",
+  {
+    title: "Introduction to Modern AI Completion",
     issuer: "Cisco Networking Academy",
-    imageUrl: pythonEssentials1Cert,
-    date: "December 5, 2025",
-    credentialUrl: "https://www.credly.com/badges/bdec1c5f-e5af-423d-b0e1-e5f934f97054/public_url",
+    imageUrl: introToModernAICert,
+    date: "December 8, 2025",
+    credentialUrl: "https://www.credly.com/badges/505dca5f-4aa7-48c6-9b06-c37495b9b9d0/public_url",
   },
   {
     title: "National Programming Challenge 2024 Participation",
@@ -56,7 +57,15 @@ const certificates: Certificate[] = [
     date: "December 5, 2024",
     credentialUrl: "https://hcdc.codechum.com/certificates/4235",
   },
-    {
+  {
+    title: "Python Essentials 1 Completion",
+    issuer: "Cisco Networking Academy",
+    imageUrl: pythonEssentials1Cert,
+    date: "December 5, 2025",
+    credentialUrl: "https://www.credly.com/badges/bdec1c5f-e5af-423d-b0e1-e5f934f97054/public_url",
+  },
+
+  {
     title: "Information Management Completion",
     issuer: "Codechum",
     imageUrl: IMCompletionCert,
@@ -170,7 +179,7 @@ export default function CertificatesPage() {
         <header className="mb-10 text-center">
           <h1 className="text-3xl md:text-4xl font-bold">Certificates</h1>
           <p className="mt-2 text-muted-foreground">
-            Acquired Certificates
+            Acquired Certificates and Credentials
           </p>
         </header>
 
