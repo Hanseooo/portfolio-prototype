@@ -10,7 +10,7 @@ import FeaturedProjects from "../sections/Projects";
 import { Particles } from "../ui/shadcn-io/particles";
 import { BackgroundBeams } from "../ui/shadcn-io/background-beams";
 import AboutMe from "../sections/AboutMe";
-import LoadingScreen from "../loadingScreens/LoadingScreen";
+// import LoadingScreen from "../loadingScreens/LoadingScreen";
 import { useAssetPreloader } from "@/hooks/useAssetPreloader";
 import { ASSETS_TO_LOAD } from "@/utils/assetsToLoad";
 // import { isInAppBrowser } from "@/utils/browserInfo";
@@ -34,10 +34,10 @@ export default function HomePage() {
 
   const {
     isLoaded,
-    progress,
-    loadedCount,
-    total,
-    setIsLoaded,
+    // progress,
+    // loadedCount,
+    // total,
+    // setIsLoaded,
   } = useAssetPreloader(ASSETS_TO_LOAD);
 
 
@@ -145,16 +145,16 @@ useEffect(() => {
     return () => ctx.revert();
   }, [isLoaded]);
 
-  if (!isLoaded) {
-    return (
-    <LoadingScreen
-      progress={progress}
-      loadedCount={loadedCount}
-      total={total}
-      onSkip={() => setIsLoaded(true)}
-    />
-      );
-  }
+  // if (!isLoaded) {
+  //   return (
+  //   <LoadingScreen
+  //     progress={progress}
+  //     loadedCount={loadedCount}
+  //     total={total}
+  //     onSkip={() => setIsLoaded(true)}
+  //   />
+  //     );
+  // }
 
 
   return (
@@ -177,7 +177,7 @@ useEffect(() => {
       />
         <div 
           ref={marqueeWrapperRef}
-          className="w-full h-screen flex flex-col justify-center items-center"
+          className="w-full h-screen pt-12 flex flex-col justify-center items-center"
         >
           <TechStackMarquee />
         </div>
