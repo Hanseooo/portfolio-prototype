@@ -1,3 +1,10 @@
+# About My Portfolio
+This Portfolio Website was built to showcase my **projects** and **certificates**.
+Integrated a **chatbot assistant** to help navigation and information.
+Built using Typescript, React, and Tailwind CSS.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
