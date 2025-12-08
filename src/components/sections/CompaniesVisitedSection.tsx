@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import { Image as ImageIcon } from "lucide-react";
+
 import { ExternalLink } from "lucide-react";
 import dynata from "@/assets/images/Companies/dynata.png";
 import mata from "@/assets/images/Companies/mata-tech.png";
 import rivan from "@/assets/images/Companies/rivan-it-cebu.jpg";
 import tarsier from "@/assets/images/Companies/TaRSIER-117.jpg";
 import cebuInit from "@/assets/images/Companies/UP-Cebu-Business-Incubator.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export type Company = {
   name: string;
@@ -80,11 +83,33 @@ const companies: Company[] = [
 
 export default function CompaniesVisitedSection() {
 
+  const [openDialogIndex, setOpenDialogIndex] = useState<number | null>(null);
+
     useEffect (() => {
        window.scrollTo(0, 0)
-    })
+    },[])
 
   return (
+    <>
+      <Dialog open={openDialogIndex !== null} onOpenChange={() => setOpenDialogIndex(null)}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>
+              {openDialogIndex !== null ? companies[openDialogIndex].name : ""}
+            </DialogTitle>
+          </DialogHeader>
+
+          {openDialogIndex !== null && (
+            <div className="w-full flex items-center justify-center">
+              <img
+                src={`/tour/journal/${openDialogIndex + 1}.png`}
+                alt="Journal entry"
+                className="max-w-full max-h-[75vh] rounded-lg object-contain"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     <article className="max-w-6xl mx-auto px-4 py-12 space-y-20" id="tour-company-journal">
       <h4 className="text-3xl font-bold">Journal Entries</h4>
 
@@ -133,6 +158,21 @@ export default function CompaniesVisitedSection() {
                 <TooltipContent>view page</TooltipContent>
               </Tooltip>
             )}
+            {/* Journal Image button */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="default"
+                    onClick={() => setOpenDialogIndex(index)}
+                    className="ml-2"
+                  >
+                    <ImageIcon className="w-5 h-5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>View Journal Image</TooltipContent>
+              </Tooltip>
+
 
             {/* Journal Entry Section */}
             <motion.div
@@ -155,5 +195,6 @@ export default function CompaniesVisitedSection() {
         </motion.div>
       ))}
     </article>
+      </>
   );
 }

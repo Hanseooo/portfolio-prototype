@@ -23,7 +23,7 @@ export default function Navbar() {
       className="
         fixed left-1/2 -translate-x-1/2
         w-full
-        z-9999
+        z-10
         backdrop-blur-sm 
         bg-background/50 
         border-b border-foreground/20 

@@ -94,7 +94,7 @@ function ChatInput({ onSend, isLoading }: { onSend: (t: string) => Promise<void>
           rows={1}
           className="resize-none max-h-32 bg-white/5 w-58 text-white placeholder-white/60"
           placeholder="Ask about the site or navigation"
-          inputMode="none"
+          autoFocus={false}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();

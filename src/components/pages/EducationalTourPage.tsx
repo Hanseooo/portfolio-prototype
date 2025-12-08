@@ -18,12 +18,12 @@ const TOUR_CERTIFICATES : Certificate[] = [
     date: "November 15, 2025",
     imageUrl: tourCert
   },
-  {
-    title: "T.A.R.S.I.E.R 117 Completion Certificate",
-    issuer: "T.A.R.S.I.E.R 117",
-    date: "November 15, 2025",
-    imageUrl: ""
-  },
+  // {
+  //   title: "T.A.R.S.I.E.R 117 Completion Certificate",
+  //   issuer: "T.A.R.S.I.E.R 117",
+  //   date: "November 15, 2025",
+  //   imageUrl: ""
+  // },
 ]
 
 function CertificateCard({ cert }: { cert: Certificate }) {
@@ -77,7 +77,7 @@ export default function EducationalTourPage() {
           <CompaniesVisitedSection />
 
         <h4 className="text-3xl font-bold mt-20 mb-8 text-center">
-          Certificates <span className="text-primary">Received</span> 
+          Certificate <span className="text-primary">Received</span> 
         </h4>
         <section className="max-w-xl mx-auto" id="tour-certificate">
           {
