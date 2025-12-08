@@ -75,8 +75,8 @@ const companies: Company[] = [
     image: tarsier,
     link: "https://www.facebook.com/TaRSIER117/",
     JournalEntry: {
-      observations: "tba",
-      learnings: "tba",
+      observations: "I observed how they incorporate technology to do their job effectively and how it impacts their efficiency.",
+      learnings: "I learned about what projects matter and what to think about when designing systems that can help communities.",
     },
   },
 ];
