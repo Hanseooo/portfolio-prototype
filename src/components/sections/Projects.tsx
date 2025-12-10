@@ -43,7 +43,7 @@ const featuredProjects: ProjectInfo[] = [
   },
   {
     id: "p2",
-    name: "HCDC Lost and Found Management System (ongoing)",
+    name: "HCDC Lost and Found Management System",
     description: "A web application that lets users post either a lost or found item and notifies them if someone wants to claim or report that they found the item. An admin manages the posts. Built during my 3rd year of college for my IM101 subject.",
     github: "https://github.com/Hanseooo/lfms",
     hostedUrl: null,
