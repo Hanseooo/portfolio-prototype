@@ -131,6 +131,17 @@ export default function AboutMe() {
                 Educational Tour
             </Button>
           </div>
+          <div className="border py-2 px-6 rounded-2xl">
+            <h4>Contact Me</h4>
+            <div className="my-2 text-start">
+              <p>
+              hans.amoguis@hcdc.edu.ph
+              </p>
+              <div>
+                linkedin: <a className="underline" href="https://linkedin.com/in/hanseooo" target="_blank" rel="noopener noreferrer">hanseooo</a>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* RIGHT COLUMN */}
